@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechJobsOO;
 
-namespace TehJobsTests
+namespace TechJobsTests
 {
     [TestClass]
     public class JobTests
