@@ -43,6 +43,17 @@ namespace TechJobsOO
             return HashCode.Combine(Id);
         }
 
+        public override string ToString()
+        {
+            return 
+                $"\nID: {Id} \n" +
+                $"Name: {(Name == null? "Data not available" : Name)} \n" +
+                $"Employer: {(EmployerName == null? "Data not available" : EmployerName.ToString())} \n" +
+                $"Location: {(EmployerLocation == null? "Data not available" : EmployerLocation.ToString())} \n" +
+                $"Position Type: {(JobType == null? "Data not available" : JobType.ToString())} \n" +
+                $"Core Competency: {(JobCoreCompetency == null? "Data not available" : JobCoreCompetency.ToString())} \n";
+        }
+
 
     }
 }

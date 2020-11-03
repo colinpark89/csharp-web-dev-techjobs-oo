@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace TechJobsOO
 {
     class Program
@@ -16,10 +17,12 @@ namespace TechJobsOO
             jobs.Add(job2);
             jobs.Add(job3);
 
+            jobs.ToString();
+
             foreach (Job job in jobs)
             {
                 Console.WriteLine(job);
-            }
+            } 
         }
     }
 }

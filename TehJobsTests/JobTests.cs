@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 using TechJobsOO;
 
 namespace TechJobsTests
@@ -9,8 +10,8 @@ namespace TechJobsTests
         [TestMethod]
         public void TestSettingJobId()
         {
-            Job job1 = new Job();
-            Job job2 = new Job();
+            Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+            Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
             Assert.AreNotEqual(job1.Id, job2.Id);
         }
 
@@ -33,6 +34,41 @@ namespace TechJobsTests
             Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
             Equals(job1, job2);
 
+        }
+
+        [TestMethod]
+        public void TestForToString()
+        {
+            Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+            Assert.AreEqual(job1.ToString()[0], '\n');
+            Assert.AreEqual(job1.ToString().Last(), '\n');
+    
+        }
+
+        [TestMethod]
+        public void TestForLabel()
+        {
+            Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+            Assert.AreEqual(job1.ToString(), 
+                $"\n ID: {job1.Id} \n" +
+                $"Name: {job1.Name} \n" +
+                $"Employer: {job1.EmployerName} \n" +
+                $"Location: {job1.EmployerLocation} \n" +
+                $"Position Type: {job1.JobType} \n" +
+                $"Core Competency: {job1.JobCoreCompetency} \n");
+        }
+
+        [TestMethod]
+        public void TestForDataNotAvailable()
+        {
+            Job job1 = new Job("Product tester", new Employer("ACME"), null, new PositionType("Quality control"), new CoreCompetency("Persistence"));
+            Assert.AreEqual(job1.ToString(),
+                $"\n ID: {job1.Id} \n" +
+                $"Name: {job1.Name} \n" +
+                $"Employer: {job1.EmployerName} \n" +
+                $"Location: Data not available \n" +
+                $"Position Type: {job1.JobType} \n" +
+                $"Core Competency: {job1.JobCoreCompetency} \n");
         }
     }
 }
